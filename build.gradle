@@ -17,7 +17,7 @@ if (System.getenv("CI")) {
 repositories {
     mavenCentral()
     maven { url("https://oss.sonatype.org/content/repositories/snapshots") }
-    mavenLocal() // note - this may pick up modified classes from ~/.m2
+   // mavenLocal() // note - this may pick up modified classes from ~/.m2
 }
 
 // ensures we pick up the very latest snapshots when built
@@ -26,13 +26,11 @@ configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 
-// TODO: Specify group, name, description, version of new code being built
 group = 'org.odpi.egeria'
 version = '1.0-SNAPSHOT'
-ext.name = 'New Egeria code'
-description = 'New code for Egeria'
+ext.name = 'Egeria OMRS Caching Connector'
+description = 'Egeria OMRS Caching Connector, all OMRS requests will be routed to the embedded OMRS connectinenctor to store (cache).'
 
-// TODO: Specify Dependency versions as variables
 ext {
     egeriaversion = '3.12'
     slf4jVersion = '1.7.36'
@@ -41,12 +39,13 @@ ext {
     httpclientVersion = '4.5.13'
 }
 
-// For a single module, add here. For multiple modules, refactor and use constraints (see main egeria build.gradle for an example)
-// TODO: Update dependencies for this module
 dependencies {
 
-    // Only used for build - already present in server chassis at runtime - similar to 'provided' with maven
+    compileOnly "org.odpi.egeria:open-connector-framework:${egeriaversion}"
     compileOnly "org.odpi.egeria:audit-log-framework:${egeriaversion}"
+    compileOnly "org.odpi.egeria:repository-services:${egeriaversion}"
+    compileOnly "org.odpi.egeria:repository-services-apis:${egeriaversion}"
+    compileOnly "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
 
     // Needed for build and run
     implementation "org.slf4j:slf4j-api:${slf4jVersion}"
@@ -73,7 +72,7 @@ test {
 }
 
 
-// Maven Central (technically sonatype oss) requires we distribute source and javadoc.
+// Maven Central (technically sonatype oss) requires we distribute source and javadoc
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
@@ -99,12 +98,11 @@ javadoc {
     }
 }
 
-// We will typically build an uber jar with dependencies. Can change name here.
 shadowJar {
     archiveClassifier = 'jar-with-dependencies'
 }
 
-// We want to built a jar with dependencies in a normal build, so to avoid specifying task explicitly
+// We want to built a jar with dependencies
 build.dependsOn shadowJar
 
 
@@ -134,12 +132,16 @@ publishing {
                         name = 'Nigel Jones'
                         email = 'nigel.l.jones+git@gmail.com'
                     }
+                    developer {
+                        id = 'davidrad'
+                        name = 'David Radley'
+                        email = 'david_radley@uk.ibm.com'
+                    }
                 }
                 scm {
-                    // TODO: Update references to git source for this particular repository
-                    connection = 'scm:git:git://github.com/odpi/egeria-template-newrepo.git'
-                    developerConnection = 'scm:git:ssh://github.com/odpi/egeria/egeria-template-newrepo.git'
-                    url = 'http://github.com/odpi/egeria-template-newrepo/'
+                    connection = 'scm:git:git://github.com/odpi/odpi/egeria-connector-omrs-caching.git'
+                    developerConnection = 'scm:git:ssh://github.com/odpi/egeria-connector-omrs-caching.git'
+                    url = 'http://github.com/odpi/egeria-connector-omrs-caching'
                 }
             }
             // Override the project name & description for the pom based on properties set in the child build.gradle (hard to default & required for maven central)
@@ -184,3 +186,4 @@ if (System.getenv("CI")) {
         useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
     }
 }
+
