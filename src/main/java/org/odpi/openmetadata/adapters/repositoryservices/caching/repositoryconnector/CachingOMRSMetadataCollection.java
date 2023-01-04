@@ -240,4 +240,32 @@ public class CachingOMRSMetadataCollection extends OMRSDynamicTypeMetadataCollec
     public void saveRelationshipReferenceCopy(String userId, Relationship relationship) throws InvalidParameterException, RepositoryErrorException, TypeErrorException, EntityNotKnownException, PropertyErrorException, HomeRelationshipException, RelationshipConflictException, InvalidRelationshipException, FunctionNotSupportedException, UserNotAuthorizedException {
         embeddedMetadataCollection.saveRelationshipReferenceCopy(userId, relationship);
     }
+    @Override
+    public void saveClassificationReferenceCopy(String         userId,
+                                                EntityProxy   entityProxy,
+                                                Classification classification) throws InvalidParameterException,
+            RepositoryErrorException,
+            TypeErrorException,
+            EntityConflictException,
+            InvalidEntityException,
+            PropertyErrorException,
+            UserNotAuthorizedException,
+            FunctionNotSupportedException
+    {
+        embeddedMetadataCollection.saveClassificationReferenceCopy(userId, entityProxy, classification);
+    }
+    @Override
+    public void saveClassificationReferenceCopy(String         userId,
+                                                EntityDetail   entity,
+                                                Classification classification) throws InvalidParameterException,
+            RepositoryErrorException,
+            TypeErrorException,
+            EntityConflictException,
+            InvalidEntityException,
+            PropertyErrorException,
+            UserNotAuthorizedException,
+            FunctionNotSupportedException
+    {
+        embeddedMetadataCollection.saveClassificationReferenceCopy(userId, entity, classification);
+    }
 }
