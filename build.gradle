@@ -46,9 +46,7 @@ dependencies {
     compileOnly "org.odpi.egeria:repository-services:${egeriaversion}"
     compileOnly "org.odpi.egeria:repository-services-apis:${egeriaversion}"
     compileOnly "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
-
-    // Needed for build and run
-    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    compileOnly "org.slf4j:slf4j-api:${slf4jVersion}"
 
     // Only needed to compile test code
     testCompileOnly "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}"
