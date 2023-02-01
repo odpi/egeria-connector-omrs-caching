@@ -35,7 +35,7 @@ ext {
     egeriaversion = '3.12'
     slf4jVersion = '1.7.36'
     jacksonVersion = '2.13.2'
-    jupiterVersion = '5.9.1'
+    jupiterVersion = '5.9.2'
     httpclientVersion = '4.5.13'
 }
 
