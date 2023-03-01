@@ -32,7 +32,7 @@ ext.name = 'Egeria OMRS Caching Connector'
 description = 'Egeria OMRS Caching Connector, all OMRS requests will be routed to the embedded OMRS connectinenctor to store (cache).'
 
 ext {
-    egeriaversion = '3.12'
+    egeriaversion = '3.15'
     slf4jVersion = '1.7.36'
     jacksonVersion = '2.13.2'
     jupiterVersion = '5.9.1'
