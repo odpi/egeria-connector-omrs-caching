@@ -18,7 +18,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: 17
           distribution: 'temurin'
       # Only for a merge into this repo - not a fork, and just for the main branch
       - name: Build (Publish snapshots to maven central)
