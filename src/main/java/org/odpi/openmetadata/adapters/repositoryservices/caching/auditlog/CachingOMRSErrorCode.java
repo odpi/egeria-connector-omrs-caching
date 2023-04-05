@@ -4,7 +4,7 @@ package org.odpi.openmetadata.adapters.repositoryservices.caching.auditlog;
 
 import org.odpi.openmetadata.frameworks.auditlog.messagesets.ExceptionMessageDefinition;
 import org.odpi.openmetadata.frameworks.auditlog.messagesets.ExceptionMessageSet;
-
+@SuppressWarnings("ImmutableEnumChecker")
 public enum CachingOMRSErrorCode implements ExceptionMessageSet {
 
     INVALID_PARAMETER_EXCEPTION(400, "OMRS-CACHING-REPOSITORY-400-001 ",
