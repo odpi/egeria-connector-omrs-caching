@@ -33,12 +33,12 @@ configurations.all {
 }
 
 group = 'org.odpi.egeria'
-version = '1.1-SNAPSHOT'
+version = '1.1'
 ext.name = 'Egeria OMRS Caching Connector'
-description = 'Egeria OMRS Caching Connector, all OMRS requests will be routed to the embedded OMRS connectinenctor to store (cache).'
-
+description = 'Egeria OMRS Caching Connector, all OMRS requests will be routed to the embedded OMRS connector to store (cache).'
+apply plugin: 'maven-publish'
 ext {
-    egeriaversion = '4.0-SNAPSHOT'
+    egeriaversion = '4.0'
 }
 
 dependencies {
@@ -46,7 +46,6 @@ dependencies {
     implementation platform("org.odpi.egeria:egeria:${egeriaversion}")
     compileOnly "org.odpi.egeria:open-connector-framework"
     compileOnly "org.odpi.egeria:audit-log-framework"
-    compileOnly "org.odpi.egeria:repository-services"
     compileOnly "org.odpi.egeria:repository-services-apis"
     compileOnly "com.fasterxml.jackson.core:jackson-annotations"
     compileOnly "org.slf4j:slf4j-api"
